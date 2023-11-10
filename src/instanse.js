@@ -25,7 +25,7 @@ export class InstanseAPI {
     
         const response = await instance.get();
     
-        console.log(response.data);
+     
 
         return response.data;
     }

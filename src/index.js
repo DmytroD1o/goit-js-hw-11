@@ -2,7 +2,7 @@
 import Notiflix from 'notiflix';
 import { InstanseAPI } from './instanse';
 
-refs = {
+const refs = {
   form: document.querySelector('#search-form'),
   buttonLoadMore: document.querySelector('.load-more'),
   renderList: document.querySelector('.gallery'),
@@ -34,7 +34,7 @@ function onSearchFunction(e) {
             throw newError(data.status)
         }
         refs.renderList.innerHTML = '';
-        console.log(data);
+        
         const markup = renderTemplates(data.hits);
         refs.renderList.insertAdjacentHTML('beforeend', markup.join(''));
         refs.btnLoadMore.classList.add('visible')
