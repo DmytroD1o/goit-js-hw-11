@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="./common.css">
     <script type="module" src="./index.js"></script>
   </head>
-  <body>
-    
+  <body class="body">
+    <header class="header">
+      <div class="input-container">
       <form class="search-form" id="search-form">
         <input
           type="text"
@@ -17,8 +18,16 @@
           placeholder="Search images..."
           class="input-form"
         />
-        <button type="submit" class="btn-submit">Search</button>
+        <button type="submit" class="btn-submit">
+          <svg class="header-icon-search" width="15" height="15">
+            <use href="./icons/symbol-defs.svg#icon-search"></use>
+          </svg>
+          <!-- Search -->
+        </button> 
       </form>
+    </div>
+    </header>
+      
     
     <div class="gallery"></div>
 
