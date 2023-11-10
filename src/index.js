@@ -15,14 +15,16 @@ const refs = {
 refs.form.addEventListener('submit', onSearchFunction);
 
 
-
 const instanseAPI = new InstanseAPI();
    
 function onSearchFunction(e) {
     e.preventDefault();
 
     if(refs.inputForm.value === '') {
+      refs.renderList.innerHTML = '';
         Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+        refs.btnLoadMore.classList.remove('visible');
+        refs.btnLoadMore.classList.add('load-more');
         return  
     }
 
@@ -34,7 +36,7 @@ function onSearchFunction(e) {
             throw newError(data.status)
         }
         refs.renderList.innerHTML = '';
-        
+        goTop()
         const markup = renderTemplates(data.hits);
         refs.renderList.insertAdjacentHTML('beforeend', markup.join(''));
         refs.btnLoadMore.classList.add('visible')
@@ -107,4 +109,14 @@ function renderTemplates(hits) {
     const markup = hits.map(renderTemplate);
     return  markup;
    
+}
+
+
+function goTop() {
+
+  if (window.scrollY > 0) {
+
+    window.scrollBy(0, -20);
+    setTimeout(goTop, 0); 
+  }
 }
